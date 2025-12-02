@@ -10,14 +10,30 @@ This project is a **small 360° photo gallery of cathedrals** that runs in the b
 
 When you open the site you stand “inside” a 360° photograph. Three text buttons in front of you let you switch between different cathedral interiors.
 
+![Screenshot of the 360° cathedral gallery demo](public/website.jpg)
+
+## Images used in this gallery
+
+This gallery currently showcases **three cathedral interiors**, each coming from the
+Flickr _equirectangular_ pool:
+
+- _Cathédrale Sainte-Croix d'Orléans 360° Panorama_  
+  <https://www.flickr.com/photos/lcsalcedo/54861274496/in/pool-equirectangular/>
+- _Holy Metropolitan Church of Hypapanti of Thira (interior)_  
+  <https://www.flickr.com/photos/hapephotographix/54878222652/in/pool-equirectangular/>
+- _Cathedral of Saint John the Baptist (interior)_  
+  <https://www.flickr.com/photos/hapephotographix/54892836881/in/pool-equirectangular/>
+
+All three images are equirectangular 360° photos, so they wrap cleanly around the
+viewer when mapped onto the A-Frame sky.
+
 ## What this project is based on
 
-This gallery is built **on top of** the official A-Frame example:
+This gallery was **originally inspired by** the A-Frame 360° Image Gallery example,
+but now uses a different layout and its own image set.
 
 - Original demo: <https://github.com/aframevr/aframe/blob/master/examples/docs/360-gallery/index.html>
 - Guide: <https://aframe.io/docs/1.7.0/guides/building-a-360-image-gallery.html>
-
-We kept the basic idea (a 360° scene with clickable links) but **replaced the original CITY / CUBES / SECHELT design** with our own layout and images.
 
 ## What’s different from the original demo
 
@@ -106,7 +122,12 @@ npm run preview
 
 - 360° gallery example and engine by the **A-Frame** team.
 - Project code is released under the **MIT License** (see [`LICENSE`](./LICENSE)).
-- Panoramic cathedral images from contributors to the **Flickr equirectangular pool**, including:
-  - <https://www.flickr.com/groups/equirectangular/pool/with/54892836686>
+- Panoramic cathedral images from the **Flickr equirectangular pool**:
+  - _Cathédrale Sainte-Croix d'Orléans 360° Panorama_  
+    <https://www.flickr.com/photos/lcsalcedo/54861274496/in/pool-equirectangular/>
+  - _Holy Metropolitan Church of Hypapanti of Thira (interior)_  
+    <https://www.flickr.com/photos/hapephotographix/54878222652/in/pool-equirectangular/>
+  - _Cathedral of Saint John the Baptist (interior)_  
+    <https://www.flickr.com/photos/hapephotographix/54892836881/in/pool-equirectangular/>
 
 Please make sure to respect the licenses and attribution requirements of the original Flickr photographers if you reuse or publish this project.
