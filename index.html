@@ -13,6 +13,41 @@
     <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
 
+    <script>
+      AFRAME.registerComponent("link-active-state", {
+        init: function () {
+          var el = this.el;
+          var sceneEl = el.sceneEl;
+
+          if (!sceneEl.components || !sceneEl.hasLoaded) {
+            var self = this;
+            sceneEl.addEventListener(
+              "loaded",
+              function () {
+                self.init();
+              },
+              { once: true }
+            );
+            return;
+          }
+
+          if (!sceneEl.selectedLink) {
+            sceneEl.selectedLink = el;
+            el.setAttribute("material", "color", "#333");
+          }
+
+          el.addEventListener("click", function () {
+            var previous = sceneEl.selectedLink;
+            if (previous && previous !== el) {
+              previous.setAttribute("material", "color", "#111");
+            }
+            el.setAttribute("material", "color", "#333");
+            sceneEl.selectedLink = el;
+          });
+        },
+      });
+    </script>
+
     <!-- Vite entry (currently only used for global styles) -->
     <script type="module" src="/src/main.ts"></script>
   </head>
@@ -23,6 +58,7 @@
         class="link"
         geometry="primitive: plane; height: 0.5; width: 5.2"
         material="shader: flat; color: #111"
+        link-active-state
         sound="on: click; src: #click-sound"
         event-set__mouseenter="scale: 1.1 1.1 1"
         event-set__mouseleave="scale: 1 1 1"
