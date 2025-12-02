@@ -21,84 +21,68 @@
     <script id="link" type="text/html">
       <a-entity
         class="link"
-        geometry="primitive: plane; height: 1; width: 1"
-        material="shader: flat; src: ${thumb}"
+        geometry="primitive: plane; height: 0.5; width: 5.2"
+        material="shader: flat; color: #111"
         sound="on: click; src: #click-sound"
-        event-set__mouseenter="scale: 1.2 1.2 1"
+        event-set__mouseenter="scale: 1.1 1.1 1"
         event-set__mouseleave="scale: 1 1 1"
         event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
         proxy-event="event: click; to: #image-360; as: fade"
-      ></a-entity>
+      >
+        <a-text
+          value="${label}"
+          align="center"
+          color="#FFF"
+          width="5"
+          position="0 0 0.01"
+        ></a-text>
+      </a-entity>
     </script>
 
     <a-scene>
       <a-assets>
+        <!-- Local cathedral panoramas (placed in /public) -->
+        <img id="orleans" src="/Cathédrale Sainte-Croix d'Orléans.jpg" />
         <img
-          id="city"
-          crossorigin="anonymous"
-          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg"
+          id="hypapanti"
+          src="/Holy Metropolitan Church of Hypapanti of Thira.jpg"
         />
-        <img
-          id="city-thumb"
-          crossorigin="anonymous"
-          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg"
-        />
-        <img
-          id="cubes-thumb"
-          crossorigin="anonymous"
-          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg"
-        />
-        <img
-          id="sechelt-thumb"
-          crossorigin="anonymous"
-          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg"
-        />
+        <img id="saint-john" src="/Cathedral of Saint John the Baptist .jpg" />
         <audio
           id="click-sound"
           crossorigin="anonymous"
           src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"
         ></audio>
-        <img
-          id="cubes"
-          crossorigin="anonymous"
-          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg"
-        />
-        <img
-          id="sechelt"
-          crossorigin="anonymous"
-          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
-        />
       </a-assets>
 
       <!-- 360-degree image. -->
       <a-sky
         id="image-360"
         radius="10"
-        src="#city"
+        src="#orleans"
         animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
         animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
       ></a-sky>
 
-      <!-- Image links. -->
-      <a-entity
-        id="links"
-        layout="type: line; margin: 1.5"
-        position="-1.5 -1 -4"
-      >
+      <!-- Image links: three labeled rectangles stacked vertically (three rows). -->
+      <a-entity id="links" position="0 -0.8 -4">
         <a-entity
           template="src: #link"
-          data-src="#city"
-          data-thumb="#city-thumb"
+          data-src="#orleans"
+          data-label="Cathédrale Sainte-Croix d'Orléans 360° Panorama"
+          position="0 0 0"
         ></a-entity>
         <a-entity
           template="src: #link"
-          data-src="#cubes"
-          data-thumb="#cubes-thumb"
+          data-src="#hypapanti"
+          data-label="Holy Metropolitan Church of Hypapanti of Thira (interior)"
+          position="0 -0.7 0"
         ></a-entity>
         <a-entity
           template="src: #link"
-          data-src="#sechelt"
-          data-thumb="#sechelt-thumb"
+          data-src="#saint-john"
+          data-label="Cathedral of Saint John the Baptist (interior)"
+          position="0 -1.4 0"
         ></a-entity>
       </a-entity>
 
